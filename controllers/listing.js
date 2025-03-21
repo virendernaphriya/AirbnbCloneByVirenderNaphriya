@@ -189,8 +189,6 @@ module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
   const { title, description,category, price, location, country ,placeType,essentials} = req.body;
 
-  // const url = req.body.image.url || "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60";
-  // //req.body.image returns an object that is our image object in which filename and url two key value pairs we can also write it like this const {url}=req.body.image; this is also a valid syntax
 
   let listing = await Listing.findByIdAndUpdate(
     id,
@@ -213,21 +211,37 @@ module.exports.updateListing = async (req, res) => {
   }
   
   await listing.save();
-  console.log(listing);
   req.flash("success", "Listing Updated Successfully");
-  res.render("./listings/show.ejs",{listing});
+  res.redirect(`/listings/${listing._id}`); 
 };
 
 module.exports.showListing = async (req, res) => {
-  let { id } = req.params;
-  let listing = await Listing.findById(id)
-    .populate({ path: "reviews", populate: { path: "author" } })
-    .populate("owner");
-  if (!listing) {
-    req.flash("error", "Cannot find that listing");
-    return res.redirect("/listings");
+  try {
+    let { id } = req.params;
+    let listing = await Listing.findById(id)
+      .populate({
+        path: "reviews",
+        populate: {
+          path: "author",
+          select: "username"  // Only select the username field
+        }
+      })
+      .populate("owner", "username");  // Only select the username field for owner
+
+    if (!listing) {
+      req.flash("error", "Cannot find that listing");
+      return res.redirect("/listings");
+    }
+
+    res.render("./listings/show.ejs", { 
+      listing,
+      newUser: req.user  // Make sure to pass the current user
+    });
+  } catch (error) {
+    console.error("Error in show listing:", error);
+    req.flash("error", "Error loading listing details");
+    res.redirect("/listings");
   }
-  res.render("./listings/show.ejs", { listing });
 };
 
 module.exports.destroy = async (req, res) => {
@@ -271,8 +285,7 @@ module.exports.listingSearch = async (req, res) => {
     const searchListings = await Listing.find({
       location: { $regex: new RegExp(searchValue, 'i') }
     });
-    
-    console.log("Search results:", searchListings);
+
     
     res.render("./listings/searchListings.ejs", { 
       searchListings,

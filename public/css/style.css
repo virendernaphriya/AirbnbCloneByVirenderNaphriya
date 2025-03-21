@@ -13,7 +13,7 @@ body{
 
 .index-box{
     width: calc(100vw - 2rem) !important;
-    margin-left: 3rem !important;
+    margin-left: 1rem !important;
     overflow-x: hidden !important;
 }
 
