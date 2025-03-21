@@ -1,0 +1,111 @@
+<!-- Sign in popup  -->
+<div class="signIn-popup">
+    <div class="signIn-popup-content">
+      <div class="signIn-popup-header mb-2">
+        <h4>Sign In</h4>
+        <button class="close-signin-popup">&times;</button>
+      </div>
+      <hr>
+      <div class="signIn-popup-body ">
+        <form method="POST" novalidate class="form needs-validation" action="/login" >
+          <% if(locals.redirectUrl) { %>
+            <input type="hidden" name="redirectUrl" value="<%= locals.redirectUrl %>">
+          <% } else if(locals.session && locals.session.redirectUrl) { %>
+            <input type="hidden" name="redirectUrl" value="<%= locals.session.redirectUrl %>">
+          <% } %>
+          <div class="form-group mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter username"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Please enter a valid username</div>
+          </div>
+          <div class="form-group mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Please enter right password</div>
+          </div>
+          <div class="form-group mb-3">
+            <button type="submit" class="btn btn-primary w-100">Sign In</button>
+          </div>
+          <div class="form-group mb-3">
+            <p class="signup-text">Don't have an account? <a class="register-link">Register Here</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- signup popup -->
+  <div class="signUp-popup">
+    <div class="signUp-popup-content">
+      <div class="signUp-popup-header mb-2">
+        <h4>Sign Up</h4>
+        <button class="close-signup-popup">&times;</button>
+      </div>
+      <hr>
+      <div class="signUp-popup-body ">
+        <form method="POST" action="/signup" novalidate class="form needs-validation" >
+          <% if(locals.redirectUrl) { %>
+            <input type="hidden" name="redirectUrl" value="<%= locals.redirectUrl %>">
+          <% } else if(locals.session && locals.session.redirectUrl) { %>
+            <input type="hidden" name="redirectUrl" value="<%= locals.session.redirectUrl %>">
+          <% } %>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter username"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Please enter a valid username</div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              placeholder="Enter your email"
+              class="form-control"
+            />
+            <div class="invalid-feedback">Please enter a valid email</div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Please enter right password</div>
+          </div>
+          
+          <div class="form-group mb-3">
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+          </div>
+        </form>
+          
+      </div>
+    </div>
+  </div>

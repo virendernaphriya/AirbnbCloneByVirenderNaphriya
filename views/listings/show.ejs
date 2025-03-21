@@ -1,0 +1,78 @@
+<% layout("layouts/boilerplate") %>
+<%- include('../includes/signInPopup.ejs') %> 
+<script>
+let mapToken="<%=process.env.MAP_TOKEN%>";
+const coordinates=<%-JSON.stringify(listing.geometry.coordinates)%>;
+</script>
+
+<div class="container">
+  <div class="row p-3">
+    <div class="col-12 col-md-12 col-lg-10  offset-lg-2 offset-md-1 offset-sm-1">
+      <h1><%=listing.title%></h1>
+      <div class="card show-card">
+        <img src="<%=listing.image.url%>" class="card-img-top">
+        <div class="card-body">
+          <h3 class="card-title"><b><%=listing.title%></b></h3>
+          <p class="card-text"><%=listing.description%></p>
+          <h4>&#8377;<%=listing.price%></h4>
+          <h5><%=listing.location%>,<%=listing.country%></h5>
+          <p>Owned By:<%=listing.owner.username%></p>
+          <p>Coordinates:<%=listing.geometry.coordinates%></p>
+          <div class="show-btns">
+            <%if(newUser && listing.owner._id.equals(newUser._id)){%>  
+              <a href="/listings/<%=listing.id%>/edit" class="btn btn-primary editBtn">Edit</a>
+              <form method="post" action="/listings/<%=listing.id%>?_method=DELETE"><button class="btn btn-dark deleteBtn">Delete</button></form>
+            <%}%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4 p-3">
+    <div class="col-lg-10  col-md-12  col-12 offset-lg-2 offset-md-1 offset-sm-1">
+      <div class="show-card review-card" id="review-card">
+        <div class="review">
+          <h3>Ratings & Reviews</h3>
+          <%if(newUser){%> 
+            <a href="/listings/<%=listing.id%>/review"><button class="btn btn-outline-dark review-btn">Rate Product</button></a>
+          <%}%>
+        </div>
+        <% if(listing.reviews.length>0){%>
+          <hr>
+          <h2>All Reviews</h2>
+          <div class="row">
+            <%for(review of listing.reviews){%>
+              <div class="col-lg-6 mb-3">
+                <div class="card review-box">
+                  <h3><%=review.author.username%></h3>
+                  <p class="starability-result" data-rating="<%=review.rating%>"></p>
+                  <p><%=review.comment%></p>
+                  <%if(newUser && review.author._id.equals(newUser._id)){%>
+                    <form method="post" action="/listings/<%=listing.id%>/review/<%=review._id%>?_method=DELETE">
+                      <button class="btn btn-dark">Delete</button>
+                    </form>
+                  <%}%>
+                </div>
+              </div>
+            <%}%>
+          </div>
+        <%}%>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4 p-3">
+    <div class="col-12  col-lg-10 col-md-12  offset-lg-2 offset-md-1 offset-sm-1">
+      <h3>Where you'll be</h3>
+      <div id="map" class="map-container"></div>
+    </div>
+  </div>
+</div>
+
+<script src="/js/map.js"></script>
+<script src="/js/filterPopup.js"></script>
+<script src="/js/signinPopup.js"></script>
+
+
+

@@ -1,0 +1,122 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="row">
+  <div class="col-lg-8 offset-lg-3">
+    <h1>Edit your Listing</h1>
+    <form method="POST" action="/listings/<%=listing._id%>?_method=PATCH" class="needs-validation" novalidate enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          value="<%=listing.title%>"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Please enter a valid title</div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          name="description"
+          id="description"
+          class="form-control"
+          required
+        >
+<%=listing.description%></textarea
+        >
+        <div class="invalid-feedback">Please enter a valid description</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="propertyType">Choose a Category:</label>
+        <select id="propertyType" class="form-select" name="category">
+          <option value="<%=listing.category%>" selected><%=listing.category%></option>
+          <option value="Treehouse">Treehouse</option>
+          <option value="Farm">Farm</option>
+          <option value="Cabin">Cabin</option>
+          <option value="Countryside">Countryside</option>
+          <option value="Beach">Beach</option>
+          <option value="Historical home">Historical home</option>
+          <option value="Castles">Castles</option>
+          <option value="Lakefront">Lakefront</option>
+          <option value="Beachfront">Beachfront</option>
+          <option value="Tiny home">Tiny home</option>
+          <option value="Top cities">Top cities</option>
+          <option value="Camping">Camping</option>
+          <option value="Desert">Desert</option>
+          <option value="Amazing pools">Amazing pools</option>
+          <option value="Arctic">Arctic</option>
+        </select>
+        
+      </div>
+
+      <p>Type of Place</p>
+    <div class="property-types mb-3">
+      <label><input type="checkbox" value="Any Type" name="placeType[]"> Any Type</label>
+      <label><input type="checkbox" value="Room" name="placeType[]"> Room</label>
+      <label><input type="checkbox" value="Entire Home" name="placeType[]"> Entire Home</label>
+    </div>
+    <p>Essentials</p>
+    <div class="essentials mb-3">
+      <label><input type="checkbox" value="WiFi" name="essentials[]"> WiFi</label>
+      <label><input type="checkbox" value="Pool" name="essentials[]"> Pool</label>
+      <label><input type="checkbox" value="Parking" name="essentials[]"> Parking</label>
+    </div>
+  <hr>
+
+      <div class="previewImg">
+        Current Image <br>
+        <img src="<%=oringinalImgUrl%>" width="100px" height="50px">
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Edit Image</label>
+        <input
+          type="file"
+          id="image"
+          name="image"
+          class="form-control"
+        />
+      </div>
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="number"
+            name="price"
+            id="price"
+            value="<%=listing.price%>"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Please enter a valid price</div>
+        </div>
+        <div class="mb-3 col-md-8">
+          <label for="country" class="form-label">Country</label>
+          <input
+            type="text"
+            name="country"
+            id="country"
+            value="<%=listing.country%>"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+          type="text"
+          name="location"
+          id="location"
+          value="<%=listing.location%>"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Please enter a valid location</div>
+      </div>
+      <button type="submit" class="btn-dark btn updateBtn mb-3">Update</button>
+    </form>
+  </div>
+</div>

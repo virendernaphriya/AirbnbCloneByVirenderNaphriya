@@ -1,0 +1,373 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: "Plus Jakarta Sans", serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* min-width: 100vw; */
+    overflow-x: hidden !important;
+}
+
+.index-box{
+    width: calc(100vw - 2rem) !important;
+    margin-left: 3rem !important;
+    overflow-x: hidden !important;
+}
+
+.container{
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    
+}
+.navbar{
+    height: 5rem;
+    box-sizing: border-box !important;
+    box-shadow: 0 0 3px black;
+    padding: 0 3rem 0 3rem !important;
+    background-color: white !important;
+}
+
+
+
+.nav-link{
+    color: #222222 !important;
+}
+.fa-compass{
+    color: rgb(160, 11, 11);
+    font-size: 2rem;
+}
+
+.nav-show{
+    background-color: white !important;
+    width: 100vw !important;
+    padding: 1rem;
+    /* margin-bottom: 1rem; */
+    border-radius: 1rem;
+    
+}
+
+.newList{
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #ffffff;
+    border-radius: 2rem;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+.newList:hover{
+    background-color: rgb(242, 241, 241) !important;
+
+}
+
+.search-box{
+    display: flex;
+    width: 25vw;
+    height: 3.2rem;
+    align-items: center !important;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: 0 0 1px black;
+    /* border: 1px solid black; */
+}
+
+.search-box:hover{
+    box-shadow: 0 0 3px black;
+}
+.search-box input{
+    background-color: transparent;
+    outline: none !important;
+    border: none;
+    border-radius: 50px;
+    margin-left: 0.3rem;
+    
+}
+.search-box input:focus{
+    box-shadow: none;
+}
+
+.search-box button{
+   display: flex;
+   align-items: center;
+   padding:0.3rem;
+}
+
+.search-box button i{
+    padding: 0.8rem;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    
+}
+@media (max-width: 767px) {
+    .nav-show{
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+        margin-top: 1rem;
+    }
+    .index-box{
+        margin-left: 1rem !important;
+    }
+    .navbar{
+        padding: 0 1rem 0 1rem !important;
+    }
+    .search-box{
+        width: 70vw !important;
+        margin: auto !important;
+    }
+  }
+
+/* Footer */
+
+footer{
+    background-color: #ebebeb;
+    color: black;
+    /* border-top: 1px solid rgb(52, 51, 51); */
+    text-align: center;
+    height: 5rem;
+    min-width: 100vw;
+    position: relative;
+    bottom: 0 !important;
+    margin-top: auto !important;
+}
+.f-info-links a{
+    color: black;
+    text-decoration: none;
+}
+.f-info-links a:hover{
+    color: #847d7d;
+    text-decoration: none;
+}
+
+/* Cards */
+
+
+ .box{
+    width: 100%;
+ }
+
+.card-img-top{
+    height: 15rem;
+    object-fit: cover;
+    align-self: center;
+    border-radius: 0.5rem !important;
+}
+.card-img-overlay{
+    background-color: rgb(161, 157, 157);
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+}
+
+.card{
+    border: none !important;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    min-height: 22rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+}
+.card-text{
+    text-align: left;    
+}
+.card-body{
+    padding: 0 !important;
+}
+
+@media (max-width: 767px) {
+    .card {
+      width: 100% !important; /* Card takes full width */
+    }
+  }
+  @media (min-width: 300px) and (max-width: 575px) {
+    .card {
+        min-height: 20rem !important;
+    }
+}
+
+.showLink{
+    text-decoration: none;
+}
+
+/* Add new route */
+.addBtn,.updateBtn,.editBtn{
+    background-color: rgb(160, 11, 11) !important;
+    border: none !important;
+}
+
+.addBtn:hover,.updateBtn:hover,.editBtn:hover{
+    background-color: rgb(190, 0, 0) !important;
+    transform: scale(1.03) !important;
+    transition: all 0.2s ease-in-out;
+}
+/* SHOW Page */
+
+.show-card{
+    border: none !important;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    min-height: 28rem !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.show-btns{
+    display: flex;
+    justify-content: left;
+}
+
+.editBtn{
+    margin-right: 1rem;
+}
+
+/* Review Section */
+.review{
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-box{
+    padding: 1rem;
+    margin-bottom: 1rem;
+    min-height: 10rem !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+#review-card{
+    display:block !important;
+    min-height: 2rem !important;
+}
+
+
+/* flashBox */
+
+.flash-box{
+    display: flex;
+    justify-content: center;
+    align-self: start;
+    text-align: center;
+
+}
+
+.check-icon{
+    width: 5rem !important;
+}
+
+.btn-close{
+    /* font-size: 2rem; */
+    padding-top: 2.5rem !important;
+}
+
+.login-box{
+    margin-bottom: 20rem !important;
+}
+
+.signupA{
+    margin-left: 1rem !important;
+    text-decoration: none !important;
+}
+
+/* Map */
+#map{
+    height:50vh;
+    /* width: 55vw; */
+    margin-bottom:2rem;
+}
+
+
+/* Filtering new form */
+
+.property-types ,.essentials{
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.property-types label,.essentials label {
+    font-size: 16px;
+    cursor: pointer;
+}
+.property-types input[type="checkbox"],.essentials input[type="checkbox"]{
+    margin-right: 5px;
+}
+
+/* Sign In Popup Styles */
+.signIn-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  backdrop-filter: blur(3px);
+}
+
+.signIn-popup.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signIn-popup-content {
+  background: white;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 12px;
+  padding: 24px;
+  position: relative;
+  z-index: 10000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.signIn-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.signIn-popup-header h4 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.signIn-popup .close-popup {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  color: #666;
+}
+
+.signIn-popup-body {
+  margin-top: 20px;
+}
+
+.signup-text {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.register-link {
+  color: #FF385C;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Make the sign-in button in navbar clickable */
+#signIn-Btn {
+  cursor: pointer;
+}
+
+

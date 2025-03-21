@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-md sticky bg-body-light  navbar-light border-bottom sticky-top " data-user-logged-in="<%= newUser ? 'true' : 'false' %>">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listings"><img src="/assets/filterIcons/airbnb logo.png" style="width: 8rem;"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse nav-show" id="navbarNavAltMarkup">
+        
+        
+          <form class="d-flex ms-auto  " action="/listings/search" method="post">
+            <div class="search-box">
+              <input class="form-control me-2 " id="search" type="search" placeholder="Search" name="search" aria-label="Search">
+            <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+          </form>
+      
+  
+        <div class="navbar-nav ms-auto">
+          <div class="newList"><a class="nav-link" id="newListing" href="/listings/new">Airbnb your home</a></div>
+          <%if(!newUser){%>
+            <div class="newList" id="signIn-Btn">Sign in</div>
+          <%}%>
+          <%if(newUser){%>
+            <div class="newList"><a class="nav-link" href="/logout">Log out</a></div>
+            <%}%>
+        </div>
+        
+      </div>
+    </div>
+  </nav>
+
+<!-- Add this script to pass newUser status to JavaScript -->
+<script>
+    // Make newUser available to client-side JavaScript
+    const newUser = <%= typeof newUser !== 'undefined' ? JSON.stringify(newUser) : 'null' %>;
+</script>

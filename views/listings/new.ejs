@@ -1,0 +1,123 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="row">
+    <div class="col-lg-8 col-md-12 offset-lg-3">
+    <h1>Create New Listing</h1>
+<form method="POST" action="/listings" novalidate class="form needs-validation" enctype="multipart/form-data" >
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input
+      type="text"
+      name="title"
+      id="title"
+      placeholder="Enter title"
+      class="form-control"
+      required
+    />
+    <div class="invalid-feedback">Please enter a valid title</div>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea
+      name="description"
+      id="description"
+      required
+      placeholder="Enter description"
+      class="form-control"
+    ></textarea>
+    <div class="invalid-feedback">Please enter a valid description</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="propertyType">Choose a Category:</label>
+    <select id="propertyType" class="form-select" name="category">
+      <option value="" disabled selected>Select an option</option>
+      <option value="Treehouse">Treehouse</option>
+      <option value="Farm">Farm</option>
+      <option value="Cabin">Cabin</option>
+      <option value="Countryside">Countryside</option>
+      <option value="Beach">Beach</option>
+      <option value="Historical home">Historical home</option>
+      <option value="Castles">Castles</option>
+      <option value="Lakefront">Lakefront</option>
+      <option value="Beachfront">Beachfront</option>
+      <option value="Tiny home">Tiny home</option>
+      <option value="Top cities">Top cities</option>
+      <option value="Camping">Camping</option>
+      <option value="Desert">Desert</option>
+      <option value="Amazing pools">Amazing pools</option>
+      <option value="Arctic">Arctic</option>
+    </select>
+    
+  </div>
+
+  <p>Type of Place</p>
+    <div class="property-types mb-3">
+      <label><input type="checkbox" value="Any Type" name="placeType[]"> Any Type</label>
+      <label><input type="checkbox" value="Room" name="placeType[]"> Room</label>
+      <label><input type="checkbox" value="Entire Home" name="placeType[]"> Entire Home</label>
+    </div>
+    <p>Essentials</p>
+    <div class="essentials mb-3">
+      <label><input type="checkbox" value="WiFi" name="essentials[]"> WiFi</label>
+      <label><input type="checkbox" value="Pool" name="essentials[]"> Pool</label>
+      <label><input type="checkbox" value="Parking" name="essentials[]"> Parking</label>
+    </div>
+  <hr>
+  
+
+  <div class="mb-3">
+    <label for="image" class="form-label">Upload Image</label>
+    <input
+      type="file"
+      id="image"
+      name="image"
+      class="form-control"
+    />
+  </div>
+  <div class="row">
+
+      <div class="mb-3 col-md-4 ">
+        <label for="price" class="form-label">Price</label>
+        <input
+          type="text"
+          name="price"
+          id="price"
+          placeholder="Enter price"
+          class="form-control"
+          required
+          />
+          <div class="invalid-feedback">Please enter a valid price</div>
+      </div>
+
+      <div class="mb-3 col-md-8 ">
+        <label for="country" class="form-label">Country</label>
+        <input
+          type="text"
+          name="country"
+          id="country"
+          placeholder="Enter country"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Please enter a valid country</div>
+      </div>
+  </div>
+  <div class="mb-3">
+    <label for="location" class="form-label">Location</label>
+    <input
+      type="text"
+      name="location"
+      id="location"
+      placeholder="Enter location"
+      class="form-control"
+      required
+
+    />
+    <div class="invalid-feedback">Please enter a valid location</div>
+  </div>
+  
+  <button type="submit" class="btn btn-dark mb-3 addBtn">Add</button>
+</form>
+</div>
+</div>

@@ -1,0 +1,42 @@
+<div class="filter-popup" id="filterPopup">
+    <div class="filter-popup-content">
+      <div class="filter-popup-header">
+        <h5>Filters</h5>
+        <button class="close-popup">&times;</button>
+      </div>
+      <div class="filter-popup-body">
+        <form action="/listings/category/<%= categoryListings.length > 0 ? categoryListings[0].category : '' %>/filter" method="GET">
+          <div class="filter-section">
+            <h6>Type of Place</h6>
+            <div class="property-types">
+              <label><input type="checkbox" value="Any Type" name="placeType[]"> Any Type</label>
+              <label><input type="checkbox" value="Room" name="placeType[]"> Room</label>
+              <label><input type="checkbox" value="Entire Home" name="placeType[]"> Entire Home</label>
+            </div>
+          </div>
+         
+          <div class="filter-section">
+            <h6>Price Range</h6>
+            <div class="price-inputs">
+              <input type="number" placeholder="Min Price" min="0" name="minPrice">
+              <input type="number" placeholder="Max Price" name="maxPrice">
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <h6>Essentials</h6>
+            <div class="essentials">
+              <label><input type="checkbox" value="WiFi" name="essentials[]"> WiFi</label>
+              <label><input type="checkbox" value="Pool" name="essentials[]"> Pool</label>
+              <label><input type="checkbox" value="Parking" name="essentials[]"> Parking</label>
+            </div>
+          </div>
+
+          <div class="filter-popup-footer">
+            <button type="button" class="clear-filters">Clear All</button>
+            <button type="submit" class="apply-filters">Show Results</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
