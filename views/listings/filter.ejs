@@ -10,9 +10,9 @@
         <a href="/listings" class="btn btn-outline-dark">Back to all listings</a>
     </div>
 <% } else { %>
-    <div class="row index-box mt-3">
+    <div class="row index-box ">
         <% for(let listing of filteredListings) { %>
-          <div class="box row col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
+          <div class="box col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
             <a class="d-block showLink" href="/listings/<%=listing.id%>">
               <div class="card">
                 <img src="<%=listing.image.url%>" class="card-img-top" alt="<%=listing.title%>" />
