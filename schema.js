@@ -9,7 +9,7 @@ module.exports.listingSchema=Joi.object({
         filename:Joi.string(),
         url:Joi.string().allow(null)
     }),
-    category: Joi.string().valid("Treehouse", "Farm", "Cabin", "Countryside", "Beach", "Historical home", "Castles", "Lakefront", "Beachfront", "Tiny home", "Top cities", "Camping", "Desert", "Amazing pools", "Arctic").required(),
+    category: Joi.string().valid("Treehouse", "Farm", "Cabin", "Countryside", "Beach", "HistoricalHome", "Castles", "Lakefront", "Beachfront", "TinyHome", "TopCities", "Camping", "Desert", "AmazingPools", "Arctic").required(),
     placeType: Joi.array().items(Joi.string().valid("Any Type", "Room", "Entire Home")),
     essentials: Joi.array().items(Joi.string().valid("WiFi", "Pool", "Parking"))
 })

@@ -56,7 +56,7 @@ const listingSchema=new Schema({
     },
     category:{
         type:String,
-        enum:["Treehouse","Farm","Cabin","Countryside","Beach","Historical home","Castles","Lakefront","Beachfront","Tiny home","Top cities","Camping","Desert","Amazing pools","Arctic"]
+        enum:["Treehouse","Farm","Cabin","Countryside","Beach","HistoricalHome","Castles","Lakefront","Beachfront","TinyHome","TopCities","Camping","Desert","AmazingPools","Arctic"]
     },
     placeType: {
         type: [String],
