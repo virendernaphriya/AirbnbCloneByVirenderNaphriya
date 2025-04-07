@@ -7,6 +7,7 @@
       </div>
       <hr>
       <div class="signIn-popup-body ">
+        <div id="signin-message" class="alert alert-info mb-3" style="display: none;"></div>
         <form method="POST" novalidate class="form needs-validation" action="/login" >
           <% if(locals.redirectUrl) { %>
             <input type="hidden" name="redirectUrl" value="<%= locals.redirectUrl %>">

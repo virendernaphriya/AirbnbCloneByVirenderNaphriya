@@ -8,27 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeSignUpPopup = document.querySelector('.close-signup-popup');
     const nav = document.querySelector('nav');
     const newListing = document.querySelector('#newListing');
+    const signinMessage = document.querySelector('#signin-message');
 
-    // Get user login status from data attribute
+    // Check if user is logged in
     const isLoggedIn = nav.dataset.userLoggedIn === 'true';
-
-    // Handle new listing click
-    if (newListing) {
-        newListing.addEventListener('click', (e) => {
-            // Only show popup if user is not logged in
-            if (!isLoggedIn) {
-                e.preventDefault(); // Prevent navigation
-                signInPopup.classList.add('show');
-                nav.style.zIndex = '-1';
-            }
-            // If user is logged in, let the link work normally (redirect to /new)
-        });
-    }
 
     // Show sign in popup
     signInBtn.addEventListener('click', () => {
         signInPopup.classList.add('show');
         nav.style.zIndex = '-1';
+        signinMessage.style.display = 'none';
     });
 
     // Show sign up popup
@@ -38,17 +27,41 @@ document.addEventListener('DOMContentLoaded', function() {
         nav.style.zIndex = '-1';
     });
 
-    // Close sign in popup
+    // Close popups
     closeSignInPopup.addEventListener('click', () => {
         signInPopup.classList.remove('show');
         nav.style.zIndex = '1';
+        signinMessage.style.display = 'none';
     });
 
-    // Close sign up popup
     closeSignUpPopup.addEventListener('click', () => {
         signUpPopup.classList.remove('show');
         nav.style.zIndex = '1';
     });
+
+    // Handle new listing click
+    if (newListing) {
+        newListing.addEventListener('click', (e) => {
+            if (!isLoggedIn) {
+                e.preventDefault();
+                signInPopup.classList.add('show');
+                nav.style.zIndex = '-1';
+                
+                // Show message and set redirect URL
+                signinMessage.textContent = 'Please login first to create a listing';
+                signinMessage.style.display = 'block';
+                signinMessage.classList.remove('alert-danger');
+                signinMessage.classList.add('alert-info');
+                
+                // Set redirect URL
+                const redirectInput = document.querySelector('.signIn-popup form input[name="redirectUrl"]');
+                if (redirectInput) {
+                    redirectInput.value = '/listings/new';
+                }
+            }
+        });
+    }
+
 });
 
 

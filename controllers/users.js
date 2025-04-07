@@ -14,6 +14,12 @@ module.exports.signupUser=async (req,res)=>{
             
             // Get redirectUrl from the form body, locals or session, with a fallback to /listings
             let redirectUrl = req.body.redirectUrl || res.locals.redirectUrl || req.session.redirectUrl || "/listings";
+            
+            // Ensure redirectUrl is a string (not an array)
+            if (Array.isArray(redirectUrl)) {
+                redirectUrl = redirectUrl[0]; // Take the first value if it's an array
+            }
+            
             console.log("Signup - Redirecting to:", redirectUrl);
             
             // Clear the redirectUrl from session to prevent future unwanted redirects
@@ -31,8 +37,14 @@ module.exports.signupUser=async (req,res)=>{
 module.exports.loginUser=(req,res)=>{
     req.flash("success","Welcome back");
     
-    // Get redirectUrl from locals or session, with a fallback to /listings
-    let redirectUrl = res.locals.redirectUrl || req.session.redirectUrl || "/listings";
+    // Get redirectUrl from form body, locals or session, with a fallback to /listings
+    let redirectUrl = req.body.redirectUrl || res.locals.redirectUrl || req.session.redirectUrl || "/listings";
+    
+    // Ensure redirectUrl is a string (not an array)
+    if (Array.isArray(redirectUrl)) {
+        redirectUrl = redirectUrl[0]; // Take the first value if it's an array
+    }
+    
     console.log("Redirecting after login to:", redirectUrl);
     
     // Clear the redirectUrl from session to prevent future unwanted redirects

@@ -1,3 +1,4 @@
+
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
@@ -18,10 +19,27 @@ router
   .route("/login")
   .post(
     saveredirectUrl,
-    passport.authenticate("local", {
-      failureFlash: true, // Redirect to index with showLogin parameter
-    }),
-    userController.loginUser);
+    (req, res, next) => {
+      passport.authenticate("local", (err, user, info) => {
+        if (err) {
+          return next(err);
+        }
+        if (!user) {
+          // Authentication failed - return JSON response with error message
+          req.flash("error", "Incorrect username or password");
+          return res.redirect("/listings");
+        }
+        // Authentication succeeded - proceed with login
+        req.logIn(user, (err) => {
+          if (err) {
+            return next(err);
+          }
+          // Call the loginUser controller
+          userController.loginUser(req, res);
+        });
+      })(req, res, next);
+    }
+  );
 
 router.get("/logout", userController.logoutUser);
 
